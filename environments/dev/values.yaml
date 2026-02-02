@@ -1,0 +1,10 @@
+replicaCount: 1
+
+config:
+  greeting: "Hello Batman from DEV via ConfigMap"
+
+secret:
+  apiToken: "dev-token-123"
+
+ingress:
+  enabled: false

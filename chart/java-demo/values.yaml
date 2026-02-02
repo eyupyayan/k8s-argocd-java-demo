@@ -1,0 +1,30 @@
+image:
+  repository: java-demo
+  tag: "1.0.0"
+  pullPolicy: IfNotPresent
+
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+config:
+  greeting: "Hello from ConfigMap"
+
+secret:
+  apiToken: "change-me" # demo-only, i ekte liv bruker du External Secrets / Sealed Secrets
+
+resources: {}
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 60
+
+ingress:
+  enabled: false
+  className: nginx
+  host: java-demo.local
+  path: /
